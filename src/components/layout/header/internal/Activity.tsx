@@ -60,7 +60,7 @@ export const Activity = () => {
 
 const ActivityIcon = memo(() => {
   const activityConfig = useAppConfigSelector(
-    (config) => config.module.activity,
+    (config) => config.module?.activity,
   )
   const { enable = false, endpoint = '/fn/ps/update' } = activityConfig || {}
   const activity = useActivity()
@@ -132,14 +132,14 @@ const ActivityIcon = memo(() => {
 
   const memoProcessName = useMemo(
     () => ({ processName: processName || '', icon: processIcon }),
-    [processIcon, processName],
+    [],
   )
 
   return (
     <>
       {!!media && (
         <m.div className="absolute inset-y-0 left-0 z-10 flex items-center lg:left-[-30px]">
-          <div className="center absolute inset-0 z-[-1] flex">
+          <div className="absolute inset-0 z-[-1] flex center">
             <div className="size-6 rounded-md ring-2 ring-red-500 dark:ring-red-400" />
           </div>
           <FloatPopover
